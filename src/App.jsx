@@ -163,7 +163,7 @@ const Header = () => {
           Evan McCormick
         </h1>
         <p className="header-subtitle">
-          Data Science, Machine Learning, and Software Engineering
+          Data Science, Machine Learning, Software Engineering
         </p>
       </div>
     </header>
