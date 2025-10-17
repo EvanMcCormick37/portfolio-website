@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ExternalLink, Github, ChevronDown } from 'lucide-react';
+import './App.css';
 
 // ============================================
 // PROJECT DATA
@@ -23,30 +24,44 @@ const projects = [
     githubUrl: "https://github.com/EvanMcCormick37/Text-Mining-Research-Project-Spring-2024",
     liveUrl: "https://text-mining-research-project-spring.vercel.app/",
   },
+  {
+    id: 3,
+    title: "Data Science Substack: Bouldering Elo on MountainProject",
+    description: "Scraped tick data for boulders in Colorado from MountainProject. Analyzed the data, used various models to predict V-grade estimates with other data, and created a match-making system to estimate climber strength and boulder difficulty without use of personal V-grade estimations.",
+    tags: ["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Python"],
+    image:"/images/MP.jpg",
+    githubUrl: "https://github.com/EvanMcCormick37/climbing-grade-predictions-without-user-grades",
+    liveUrl: "https://evmojo37.substack.com/p/who-needs-v-grades",
+  },
+  {
+    id: 4,
+    title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
+    description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
+    tags: ["Data Science", "Data Mining", "Statistics", "Database Management", "Data Communication", "Kotlin", "JavaScript", "Firebase"],
+    image: "/images/CG.png",
+    githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
+    liveUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
+  }
 ];
 
 // ============================================
 // TAG COMPONENT
 // ============================================
 const Tag = ({ children, index }) => {
-  const colors = [
-    'bg-blue-100 text-blue-700 hover:bg-blue-200',
-    'bg-orange-100 text-orange-700 hover:bg-orange-200',
-    'bg-green-100 text-green-700 hover:bg-green-200',
-    'bg-purple-100 text-purple-700 hover:bg-purple-200',
-    'bg-teal-100 text-teal-700 hover:bg-teal-200',
-    'bg-pink-100 text-pink-700 hover:bg-pink-200',
-    'bg-yellow-100 text-yellow-700 hover:bg-yellow-200',
-    'bg-indigo-100 text-indigo-700 hover:bg-indigo-200',
+  const tagClasses = [
+    'tag-blue',
+    'tag-green', 
+    'tag-purple',
+    'tag-red',
+    'tag-yellow',
+    'tag-indigo',
+    'tag-pink',
+    'tag-gray'
   ];
 
   return (
     <span
-      className={`
-        px-3 py-1.5 text-xs font-bold rounded-full
-        transition-colors duration-200
-        ${colors[index % colors.length]}
-      `}
+      className={`tag ${tagClasses[index % tagClasses.length]}`}
     >
       {children}
     </span>
@@ -60,41 +75,35 @@ const ProjectCard = ({ project }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <article className="
-      bg-white rounded-2xl shadow-md overflow-hidden
-      hover:shadow-2xl hover:-translate-y-1
-      transition-all duration-300
-      flex flex-col h-full
-      border border-gray-100
-    ">
+    <article className="project-card">
       {/* Project Image/Screenshot */}
-      <div className="relative h-64 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 overflow-hidden">
+      <div className="project-image-container">
         {!imageError ? (
           <img
             src={project.image}
             alt={`${project.title} screenshot`}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            className="project-image loaded"
             onError={() => setImageError(true)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center p-8">
+          <div className="project-image-placeholder">
             <div className="text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl mx-auto mb-4 opacity-20"></div>
-              <p className="text-gray-400 font-semibold text-lg">{project.title}</p>
+              <div className="text-center"></div>
+              <p className="text-center">{project.title}</p>
             </div>
           </div>
         )}
       </div>
 
       {/* Card Content */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="project-content">
         {/* Title */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+        <h2 className="project-title">
           {project.title}
         </h2>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="project-tags">
           {project.tags.map((tag, index) => (
             <Tag key={index} index={index}>
               {tag}
@@ -103,24 +112,17 @@ const ProjectCard = ({ project }) => {
         </div>
 
         {/* Description */}
-        <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow line-clamp-4">
+        <p className="project-description">
           {project.description}
         </p>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 mt-auto">
+        <div className="project-buttons">
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              flex-1 bg-orange-500 hover:bg-orange-600
-              text-white font-bold py-3 px-4 rounded-xl
-              transition-all duration-200
-              flex items-center justify-center gap-2
-              shadow-md hover:shadow-lg
-              active:scale-95
-            "
+            className="btn btn-primary"
           >
             <span>Read More</span>
           </a>
@@ -129,15 +131,7 @@ const ProjectCard = ({ project }) => {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              flex-1 bg-white border-2 border-blue-500
-              text-blue-600 hover:bg-blue-50 hover:border-blue-600
-              font-bold py-3 px-4 rounded-xl
-              transition-all duration-200
-              flex items-center justify-center gap-2
-              shadow-md hover:shadow-lg
-              active:scale-95
-            "
+            className="btn btn-secondary"
           >
             <span>Visit</span>
             <ExternalLink size={16} />
@@ -147,14 +141,7 @@ const ProjectCard = ({ project }) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              bg-gray-100 hover:bg-gray-800 hover:text-white
-              text-gray-700 p-3 rounded-xl
-              transition-all duration-200
-              flex items-center justify-center
-              shadow-md hover:shadow-lg
-              active:scale-95
-            "
+            className="btn btn-secondary"
             aria-label="View on GitHub"
           >
             <Github size={20} />
@@ -170,16 +157,14 @@ const ProjectCard = ({ project }) => {
 // ============================================
 const Header = () => {
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Evan McCormick
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Data Science, Machine Learning, and Software Engineering portfolio
-          </p>
-        </div>
+    <header className="header">
+      <div className="header-content">
+        <h1 className="header-title">
+          Evan McCormick
+        </h1>
+        <p className="header-subtitle">
+          Data Science, Machine Learning, and Software Engineering
+        </p>
       </div>
     </header>
   );
@@ -192,26 +177,18 @@ const MoreProjectsButton = ({ showAll, onClick, projectCount }) => {
   if (projectCount <= 4) return null;
 
   return (
-    <div className="flex justify-center mt-12">
+    <div className="more-projects-section">
       <button
         onClick={onClick}
-        className="
-          bg-white hover:bg-orange-50
-          text-orange-600 font-bold py-4 px-8
-          rounded-xl shadow-lg hover:shadow-xl
-          transition-all duration-200
-          flex items-center gap-3
-          border-2 border-orange-500
-          active:scale-95
-        "
+        className="more-projects-btn"
       >
-        <span className="text-lg">
+        <span>
           {showAll ? 'Show Less' : 'More Projects'}
         </span>
         <ChevronDown
           size={20}
-          className={`transform transition-transform duration-300 ${
-            showAll ? 'rotate-180' : ''
+          className={`chevron-icon ${
+            showAll ? 'rotated' : ''
           }`}
         />
       </button>
@@ -227,11 +204,11 @@ function App() {
   const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="app">
       <Header />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="main-content">
         {/* Project Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 auto-rows-fr">
+        <div className="project-grid">
           {displayedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
