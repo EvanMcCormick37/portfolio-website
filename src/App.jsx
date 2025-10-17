@@ -78,21 +78,12 @@ const ProjectCard = ({ project }) => {
     <article className="project-card">
       {/* Project Image/Screenshot */}
       <div className="project-image-container">
-        {!imageError ? (
           <img
             src={project.image}
             alt={`${project.title} screenshot`}
             className="project-image loaded"
             onError={() => setImageError(true)}
           />
-        ) : (
-          <div className="project-image-placeholder">
-            <div className="text-center">
-              <div className="text-center"></div>
-              <p className="text-center">{project.title}</p>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Card Content */}
