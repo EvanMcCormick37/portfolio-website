@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ExternalLink, Github, ChevronDown } from 'lucide-react';
+import { useState, useCallback } from 'react';
+import { ExternalLink, Github, ChevronDown, ChevronUp } from 'lucide-react';
 import './App.css';
 
 // ============================================
@@ -153,6 +153,34 @@ const ProjectCard = ({ project }) => {
 };
 
 // ============================================
+// SECTION CARD COMPONENT
+// ============================================
+const SectionCard = ({ children, name }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = useCallback(()=>{
+    setIsOpen(prev => !prev);
+  }, []);
+
+  return (
+    <div className = "section-card">
+      {!isOpen &&
+      <button className = "section-header" onClick={toggle}>
+        <span className = "section-title">{name}</span>
+      </button>
+      }
+      {isOpen && 
+      <div className = "section-content">
+        {children}
+        <button className = "section-close" onClick={toggle}>
+          <ChevronUp size={20}></ChevronUp>
+        </button>
+      </div>
+      }
+    </div>
+  )
+}
+
+// ============================================
 // HEADER COMPONENT
 // ============================================
 const Header = () => {
@@ -207,12 +235,16 @@ function App() {
     <div className="app">
       <Header />
       <main className="main-content">
-        {/* Project Grid */}
-        <div className="project-grid">
-          {displayedProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        <SectionCard name = {"Me"}>
+        </SectionCard>
+        {/* Project Section */}
+        <SectionCard name = {"Projects"}>
+          <div className="project-grid">
+            {displayedProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </SectionCard>
       </main>
     </div>
   );

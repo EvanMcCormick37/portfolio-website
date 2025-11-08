@@ -1,29 +1,33 @@
 /* ============================================ */
 /* GLOBAL STYLES */
 /* ============================================ */
-* {
-  box-sizing: border-box;
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .app {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  background: rgb(20, 20, 20);
   color: white;
-  overflow-x: hidden;
 }
 
 /* ============================================ */
 /* HEADER STYLES */
 /* ============================================ */
 .header {
-  width: 100%;
+  display: flex;
   text-align: center;
   padding: clamp(2rem, 5vw, 4rem) 1rem;
 }
 
 .header-content {
-  margin: 0 auto;
+  margin: auto;
   width: 100%;
 }
 
@@ -41,7 +45,7 @@
 .header-subtitle {
   font-size: clamp(1rem, 3vw, 1.5rem);
   color: #dcfce7;
-  margin: 0 auto;
+  margin: auto;
   line-height: 1.4;
 }
 
@@ -49,7 +53,11 @@
 /* MAIN CONTENT STYLES */
 /* ============================================ */
 .main-content {
-  margin: 0 auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
   padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
   width: 100%;
 }
@@ -370,6 +378,58 @@
 }
 
 /* ============================================ */
+/* SECTION CARD */
+/* ============================================ */
+.section-card {
+  margin: auto;
+  overflow: hidden;
+}
+
+.section-header {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.section-header:hover, .section-close:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #65408a 100%);
+  transform: scale(0.95);
+}
+
+.section-content {
+  display: flex; 
+  flex-direction: column;
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.section-close {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ============================================ */
 /* FOOTER STYLES */
 /* ============================================ */
 .footer {
@@ -386,67 +446,4 @@
   padding: 0 clamp(1rem, 3vw, 2rem);
   text-align: center;
   font-size: clamp(0.875rem, 2.5vw, 1rem);
-}
-
-/* ============================================ */
-/* RESPONSIVE DESIGN - MOBILE SPECIFIC */
-/* ============================================ */
-
-/* Extra Small Screens (phones in portrait) */
-@media (max-width: 480px) {
-  .header {
-    padding: 1.5rem 0.5rem;
-  }
-  
-  .header-title {
-    font-size: 2rem;
-    line-height: 1.1;
-  }
-  
-  .header-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .main-content {
-    padding: 1.5rem 0.5rem;
-  }
-  
-  .project-grid {
-    gap: 1.5rem;
-  }
-  
-  .project-content {
-    padding: 1rem;
-  }
-  
-  .project-title {
-    font-size: 1.1rem;
-    -webkit-line-clamp: 2;
-  }
-  
-  .project-description {
-    font-size: 0.875rem;
-  }
-  
-  .project-buttons {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .btn {
-    flex: none;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    justify-content: center;
-  }
-  
-  .tag {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.4rem;
-  }
-  
-  .more-projects-btn {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
-  }
 }
