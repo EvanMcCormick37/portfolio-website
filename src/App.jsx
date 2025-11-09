@@ -7,7 +7,6 @@ import './App.css';
 // ============================================
 const projects = [
   {
-    id: 1,
     title: "The Embodied Communication Game: A Task for Reinforcement-Learning Agents",
     description: "Analyzed RL agent performance in a game requiring the formation of novel communication systems without explicit channels. Implemented and evaluated reinforcement learning models in custom RL environments.",
     tags: ["Machine Learning","Reinforcement Learning","Python","Keras","Gymnasium","StableBaselines3"],
@@ -16,7 +15,6 @@ const projects = [
     liveUrl: "https://independent-study-f24-learning-rl-w.vercel.app/",
   },
   {
-    id: 2,
     title: "Text Mining Public Opinion on the Transgender Rights Movement in the News",
     description: "Analyzed transgender rights coverage across the political spectrum using web-scraped news data. Applied clustering, topic modeling, and rule-mining to categorize and characterize the text. Implemented various supervised learning models (Naive-Bayes, Decision Trees, SVMs), plus neural networks for sentiment analysis—revealing key trends in media representation of transgender issues.",
     tags: ["Data Science","Text Mining","Sentiment Analysis","NLP","Unsupervised Learning","Clustering","ARM","LDA","Python","R"],
@@ -25,7 +23,6 @@ const projects = [
     liveUrl: "https://text-mining-research-project-spring.vercel.app/",
   },
   {
-    id: 3,
     title: "Data Science Substack: Bouldering Elo on MountainProject",
     description: "Scraped tick data for boulders in Colorado from MountainProject. Analyzed the data, used various models to predict V-grade estimates with other data, and created a match-making system to estimate climber strength and boulder difficulty without use of personal V-grade estimations.",
     tags: ["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Python"],
@@ -34,7 +31,6 @@ const projects = [
     liveUrl: "https://evmojo37.substack.com/p/who-needs-v-grades",
   },
   {
-    id: 4,
     title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
     description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
     tags: ["Data Science", "Data Mining", "Statistics", "Database Management", "Data Communication", "Kotlin", "JavaScript", "Firebase"],
@@ -43,7 +39,6 @@ const projects = [
     liveUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
   },
   {
-    id: 5,
     title: "Linear Model Generator for Numeric Datasets",
     description: "Developed a Python Streamlit application for generating and visualizing linear models for numeric datasets. Deployed application on Streamlit Cloud.",
     tags: ["Data Science", "Machine Learning", "Python", "Data Visualization", "Streamlit", "Data Communication"],
@@ -52,6 +47,11 @@ const projects = [
     liveUrl: "https://linearmodelgenerator.streamlit.app/",
   }
 ];
+
+const personalInfo = {
+    title: "About Me",
+    text: "Hey y'all! I'm an avid Data Scientist and Software Developer with 3 years of experience in full-stack development. Earlier this year, I completed my Master's in Data Science at University of Colorado Boulder (May 2025) with a focus in Machine Learning, Reinforcement Learning, LLMs and Big Data Architecture. I'm passionate about using statistics, ML engineering, and software design to develop innovative solutions to complex problems. Check out my skills and deployed projects here!"
+  }
 
 // ============================================
 // TAG COMPONENT
@@ -153,6 +153,19 @@ const ProjectCard = ({ project }) => {
 };
 
 // ============================================
+// PERSONAL INFO CARD COMPONENT
+// ============================================
+const PersonalCard = ({title, text}) => {
+  return (
+    <div className = "personal-card">
+      <h1 className = "personal-title">{title}</h1>
+      <p className = "personal-text">{text}</p>
+      <></>
+    </div>
+  )
+}
+
+// ============================================
 // SECTION CARD COMPONENT
 // ============================================
 const SectionCard = ({ children, name }) => {
@@ -199,32 +212,6 @@ const Header = () => {
 };
 
 // ============================================
-// MORE PROJECTS BUTTON COMPONENT
-// ============================================
-const MoreProjectsButton = ({ showAll, onClick, projectCount }) => {
-  if (projectCount <= 4) return null;
-
-  return (
-    <div className="more-projects-section">
-      <button
-        onClick={onClick}
-        className="more-projects-btn"
-      >
-        <span>
-          {showAll ? 'Show Less' : 'More Projects'}
-        </span>
-        <ChevronDown
-          size={20}
-          className={`chevron-icon ${
-            showAll ? 'rotated' : ''
-          }`}
-        />
-      </button>
-    </div>
-  );
-};
-
-// ============================================
 // MAIN APP COMPONENT
 // ============================================
 function App() {
@@ -235,13 +222,15 @@ function App() {
     <div className="app">
       <Header />
       <main className="main-content">
+        {/* Personal Info Section */}
         <SectionCard name = {"Me"}>
+          <PersonalCard {...personalInfo}></PersonalCard>
         </SectionCard>
         {/* Project Section */}
         <SectionCard name = {"Projects"}>
           <div className="project-grid">
             {displayedProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard project={project} />
             ))}
           </div>
         </SectionCard>
