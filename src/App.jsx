@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import {Github, ChevronUp, Mail, Phone, MapPin, Linkedin} from 'lucide-react';
+import emailjs from "@emailjs/browser";
 import './App.css';
 
 //============================================
@@ -211,16 +212,33 @@ const ContactCard=({ email, phone, location, social })=> {
   const [formData, setFormData]=useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
 
   const handleSubmit=(e)=> {
     e.preventDefault();
-    const subject=encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body=encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
+
+    const serviceId="service_2zjpfup";
+    const templateId="template_onzvo93";
+    const publicKey="Ia45PidZGRXBo8lZi";
+
+    const templateParams={
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: "evdev.mojo@gmail.com"
+    };
+
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+    });
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) =>{
+        console.log(response.status, response.text);
+      });
   };
 
   const handleChange=(e)=> {
