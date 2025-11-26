@@ -35,7 +35,7 @@ const projects=[
     title: "Distracted LLM: A full-stack RAG Application",
     description: "Built A full-stack RAG application on a budget of 0$, using REST API, containerization, cloud compute and serverless API proxying. Backend: Python, ChromaDB, SentenceTransformers, Gemini-2.0-flash. Front-end: React, Vite, TailwindCSS. API: FastAPI, Axios. Deployment and hosting: Docker, Google Cloud Compute, Vercel",
     tags: ["Python","Docker","CGP","RAG","REST API","Database Management","React"],
-    image: "/assets/DLLM.jpg",
+    image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
     readMoreUrl:"https://evmojo37.substack.com/p/distracted-llm",
     liveUrl: "https://full-stack-nhz8u7vsc-evan-mccornmicks-projects.vercel.app/",
