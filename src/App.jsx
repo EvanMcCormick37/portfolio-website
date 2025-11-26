@@ -37,6 +37,7 @@ const projects=[
     tags: ["Python","Docker","CGP","RAG","REST API","Database Management","React"],
     image: "/assets/DLLM.JPG",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
+    readMoreUrl:"https://evmojo37.substack.com/p/distracted-llm",
     liveUrl: "https://full-stack-nhz8u7vsc-evan-mccornmicks-projects.vercel.app/",
   },
   {
@@ -45,7 +46,7 @@ const projects=[
     tags: ["Machine Learning","Reinforcement Learning","Python","Keras","TensorFlow","Gymnasium","StableBaselines3"],
     image: "/assets/ECG.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/independent-study-F24-learning-RL-with-gymnasium",
-    liveUrl: "https://independent-study-f24-learning-rl-w.vercel.app/",
+    readMoreUrl: "https://independent-study-f24-learning-rl-w.vercel.app/",
   },
   {
     title: "Text Mining Public Opinion on the Transgender Rights Movement in the News",
@@ -53,7 +54,7 @@ const projects=[
     tags: ["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","Python","R"],
     image: "/assets/TM.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/Text-Mining-Research-Project-Spring-2024",
-    liveUrl: "https://text-mining-research-project-spring.vercel.app/",
+    readMoreUrl: "https://text-mining-research-project-spring.vercel.app/",
   },
   {
     title: "Data Science Substack: Bouldering Elo on MountainProject",
@@ -61,7 +62,7 @@ const projects=[
     tags: ["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Python"],
     image:"/assets/MP.JPG",
     githubUrl: "https://github.com/EvanMcCormick37/climbing-grade-predictions-without-user-grades",
-    liveUrl: "https://evmojo37.substack.com/p/who-needs-v-grades",
+    readMoreUrl: "https://evmojo37.substack.com/p/who-needs-v-grades",
   },
   {
     title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
@@ -69,7 +70,7 @@ const projects=[
     tags: ["Data Science", "Data Mining", "Database Management", "Data Communication", "Kotlin", "Firebase"],
     image: "/assets/CG.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
-    liveUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
+    readMoreUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
   }
 ];
 
@@ -113,6 +114,7 @@ const ProjectCard=({ project })=> {
             alt={`${project.title} screenshot`}
             className="project-image loaded"
             onError={()=> setImageError(true)}
+            href={project.liveUrl?? null}
           />
       </div>
 
@@ -140,7 +142,7 @@ const ProjectCard=({ project })=> {
         {/* Action Buttons */}
         <div className="project-buttons">
           <a
-            href={project.liveUrl}
+            href={project.readMoreUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
