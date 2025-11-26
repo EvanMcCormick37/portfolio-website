@@ -31,10 +31,18 @@ const contactInfo={
 // PROJECT DATA
 //============================================
 const projects=[
+    {
+    title: "Distracted LLM: A full-stack RAG Application",
+    description: "Built A full-stack RAG application on a budget of 0$, using REST API, containerization, cloud compute and serverless API proxying. Backend: Python, ChromaDB, SentenceTransformers, Gemini-2.0-flash. Front-end: React, Vite, TailwindCSS. API: FastAPI, Axios. Deployment and hosting: Docker, Google Cloud Compute, Vercel",
+    tags: ["Python","Docker","CGP","RAG","REST API","Database Management","React"],
+    image: "/assets/DLLM.PNG",
+    githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
+    liveUrl: "https://full-stack-nhz8u7vsc-evan-mccornmicks-projects.vercel.app/",
+  },
   {
     title: "The Embodied Communication Game: A Task for Reinforcement-Learning Agents",
     description: "Analyzed RL agent performance in a game requiring the formation of novel communication systems without explicit channels. Implemented and evaluated reinforcement learning models in custom RL environments.",
-    tags: ["Machine Learning","Reinforcement Learning","Python","Keras","Gymnasium","StableBaselines3"],
+    tags: ["Machine Learning","Reinforcement Learning","Python","Keras","TensorFlow","Gymnasium","StableBaselines3"],
     image: "/assets/ECG.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/independent-study-F24-learning-RL-with-gymnasium",
     liveUrl: "https://independent-study-f24-learning-rl-w.vercel.app/",
@@ -42,7 +50,7 @@ const projects=[
   {
     title: "Text Mining Public Opinion on the Transgender Rights Movement in the News",
     description: "Analyzed transgender rights coverage across the political spectrum using web-scraped news data. Applied clustering, topic modeling, and rule-mining to categorize and characterize the text. Implemented various supervised learning models (Naive-Bayes, Decision Trees, SVMs), plus neural networks for sentiment analysis—revealing key trends in media representation of transgender issues.",
-    tags: ["Data Science","Text Mining","Sentiment Analysis","NLP","Unsupervised Learning","Clustering","ARM","LDA","Python","R"],
+    tags: ["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","Python","R"],
     image: "/assets/TM.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/Text-Mining-Research-Project-Spring-2024",
     liveUrl: "https://text-mining-research-project-spring.vercel.app/",
@@ -58,18 +66,10 @@ const projects=[
   {
     title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
     description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
-    tags: ["Data Science", "Data Mining", "Statistics", "Database Management", "Data Communication", "Kotlin", "JavaScript", "Firebase"],
+    tags: ["Data Science", "Data Mining", "Database Management", "Data Communication", "Kotlin", "Firebase"],
     image: "/assets/CG.PNG",
     githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
     liveUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
-  },
-  {
-    title: "Linear Model Generator for Numeric Datasets",
-    description: "Developed a Python Streamlit application for generating and visualizing linear models for numeric datasets. Deployed application on Streamlit Cloud.",
-    tags: ["Data Science", "Machine Learning", "Python", "Data Visualization", "Streamlit", "Data Communication"],
-    image: "/assets/LMG.PNG",
-    githubUrl: "https://github.com/EvanMcCormick37/StreamlitLMApp",
-    liveUrl: "https://linearmodelgenerator.streamlit.app/",
   }
 ];
 
@@ -167,8 +167,18 @@ const ProjectCard=({ project })=> {
 //============================================
 const PersonalCard=({title, text, photoURL, resumeURL})=> {
 
-  const allSkills=useMemo(()=>{
-    return [...new Set(projects.flatMap(project=> project.tags))].sort();
+  const allSkills = useMemo(()=>{
+
+    const flatTags = projects.flatMap(project => project.tags);
+
+    const tagCounts = flatTags.reduce((acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    },{});
+
+    return Object.entries(tagCounts)
+      .map(([tag, count])=>({tag, count}))
+      .sort((a,b)=>b.count - a.count || a.tag.localeCompare(b.tag));
   },[projects]);
 
   return (
@@ -186,7 +196,7 @@ const PersonalCard=({title, text, photoURL, resumeURL})=> {
         <h2 className="skills-title">Skills</h2>
         <div className="skills-container">
           {allSkills.map((skill,index)=>(
-            <Tag key={index} index={index}>{skill}</Tag>
+            <Tag key={index} index={index}>{`${skill.tag} (${skill.count})`}</Tag>
           ))}
         </div>
       </div>
@@ -401,8 +411,6 @@ const Header=()=> {
 // MAIN APP COMPONENT
 //============================================
 function App() {
-  const [showAll, setShowAll]=useState(false);
-  const displayedProjects=showAll ? projects : projects.slice(0, 4);
 
   return (
     <div className="app">
@@ -415,7 +423,7 @@ function App() {
         {/* Project Section */}
         <SectionCard name={"Projects"}>
           <div className="project-grid">
-            {displayedProjects.map((project, index)=> (
+            {projects.map((project, index)=> (
               <ProjectCard key={index} project={project} />
             ))}
           </div>
