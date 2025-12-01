@@ -38,7 +38,7 @@ const projects=[
     image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
     readMoreUrl:"https://evmojo37.substack.com/p/distracted-llm",
-    liveUrl: "https://full-stack-nhz8u7vsc-evan-mccornmicks-projects.vercel.app/",
+    liveUrl: "https://full-stack-rag-neon.vercel.app/",
   },
   {
     title: "The Embodied Communication Game: A Task for Reinforcement-Learning Agents",
