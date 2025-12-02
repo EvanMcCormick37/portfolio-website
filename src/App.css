@@ -491,10 +491,6 @@ a.contact-value:hover {
   margin-bottom: clamp(0.75rem, 2vw, 1rem);
 }
 
-.project-tag-list {
-  display: flex;
-}
-
 .show-tags-btn {
   background: transparent;
   border: none;

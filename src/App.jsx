@@ -125,15 +125,13 @@ const TagList =({tags, numShow})=>{
   },[showAll, tags, numShow]);
 
   return(
-    <div className="project-tag-list">
-      <div className="project-tags">
-        {displayedTags.map((tag, index)=> (
-          <Tag key={index} index={index}>
-            {tag}
-          </Tag>
-        ))}
-        {tags.length > numShow && <button className='show-tags-btn' onClick = {toggle}>{showAll? `<` : `>`}</button>}
-      </div>
+    <div className="project-tags">
+      {displayedTags.map((tag, index)=> (
+        <Tag key={index} index={index}>
+          {tag}
+        </Tag>
+      ))}
+      {tags.length > numShow && <button className='show-tags-btn' onClick = {toggle}>{showAll? `<` : `>`}</button>}
     </div>
   )
 }
