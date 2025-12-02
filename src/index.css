@@ -26,7 +26,6 @@ a:hover {
 
 html, body {
   width: 100%;
-  overflow: hidden;
 }
 
 h1 {
@@ -64,4 +63,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Hiding the scroll-bar on Chromium browsers */
+::-webkit-scrollbar {
+  display: none;
 }

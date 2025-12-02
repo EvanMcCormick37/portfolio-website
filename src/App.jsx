@@ -33,8 +33,11 @@ const contactInfo={
 const projects=[
     {
     title: "Distracted LLM: A full-stack RAG Application",
-    description: "Built A full-stack RAG application on a budget of 0$, using REST API, containerization, cloud compute and serverless API proxying. Backend: Python, ChromaDB, SentenceTransformers, Gemini-2.0-flash. Front-end: React, Vite, TailwindCSS. API: FastAPI, Axios. Deployment and hosting: Docker, Google Cloud Compute, Vercel",
-    tags: ["Python","Docker","CGP","RAG","REST API","Database Management","React"],
+    description: "Built A full-stack RAG application using REST API, containerization, and cloud compute. Distracted LLM allows multiple users to asynchronously upload 'distractions' to the vector database. Distracted LLM will then shamelessly attempt to change the subject to whatever 'distractions' the RAG service returns for any given user query.",
+    tags: {
+      skills:["RAG","REST API","Database Management","LLM","Full-stack"],
+      frameworks:["Python","Docker","CGP","React","Vercel"]
+    },
     image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
     readMoreUrl:"https://evmojo37.substack.com/p/distracted-llm",
@@ -43,7 +46,10 @@ const projects=[
   {
     title: "The Embodied Communication Game: A Task for Reinforcement-Learning Agents",
     description: "Analyzed RL agent performance in a game requiring the formation of novel communication systems without explicit channels. Implemented and evaluated reinforcement learning models in custom RL environments.",
-    tags: ["Machine Learning","Reinforcement Learning","Python","Keras","TensorFlow","Gymnasium","StableBaselines3"],
+    tags: {
+      skills:["Machine Learning","Reinforcement Learning","Multi-Agent"],
+      frameworks:["Python","Tensorflow","Gymnasium","StableBaselines3","Jupyter Notebook","Vercel"]
+    },
     image: "/assets/ECG.png",
     githubUrl: "https://github.com/EvanMcCormick37/independent-study-F24-learning-RL-with-gymnasium",
     readMoreUrl: "https://independent-study-f24-learning-rl-w.vercel.app/",
@@ -51,7 +57,10 @@ const projects=[
   {
     title: "Text Mining Public Opinion on the Transgender Rights Movement in the News",
     description: "Analyzed transgender rights coverage across the political spectrum using web-scraped news data. Applied clustering, topic modeling, and rule-mining to categorize and characterize the text. Implemented various supervised learning models (Naive-Bayes, Decision Trees, SVMs), plus neural networks for sentiment analysis—revealing key trends in media representation of transgender issues.",
-    tags: ["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","Python","R"],
+    tags: {
+      skills:["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA"],
+      frameworks:["Python","R","Tensorflow","Jupyter Notebook","Vercel"]
+    },
     image: "/assets/TM.png",
     githubUrl: "https://github.com/EvanMcCormick37/Text-Mining-Research-Project-Spring-2024",
     readMoreUrl: "https://text-mining-research-project-spring.vercel.app/",
@@ -59,7 +68,10 @@ const projects=[
   {
     title: "Data Science Substack: Bouldering Elo on MountainProject",
     description: "Scraped tick data for boulders in Colorado from MountainProject. Analyzed the data, used various models to predict V-grade estimates with other data, and created a match-making system to estimate climber strength and boulder difficulty without use of personal V-grade estimations.",
-    tags: ["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Python"],
+    tags: {
+      skills:["Data Science", "Data Mining", "Data Visualization", "Data Communication"],
+      frameworks:["Python","Jupyter Notebook"]
+    },
     image:"/assets/MP.jpg",
     githubUrl: "https://github.com/EvanMcCormick37/climbing-grade-predictions-without-user-grades",
     readMoreUrl: "https://evmojo37.substack.com/p/who-needs-v-grades",
@@ -67,7 +79,10 @@ const projects=[
   {
     title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
     description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
-    tags: ["Data Science", "Data Mining", "Database Management", "Data Communication", "Kotlin", "Firebase"],
+    tags: {
+      skills:["Full-stack","Mobile Development","Database Management","Data Science","Data Mining","Data Communication"],
+      frameworks:["Kotlin", "Firebase","JavaScript","Python","Jupyter Notebook"]
+    },
     image: "/assets/CG.png",
     githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
     readMoreUrl: "https://evmojo37.substack.com/p/chess-app-part-ii-the-positions-strike",
@@ -100,6 +115,30 @@ const Tag=({ children, index })=> {
 };
 
 //============================================
+//  TAG LIST COMPONENT
+//============================================
+const TagList =({tags, numShow})=>{
+  const [showAll, setShowAll] = useState(false);
+  const toggle = useCallback(()=>setShowAll(prev => !prev),[]);
+  const displayedTags = useMemo(()=>{
+    return (!showAll && tags.length > numShow ? tags.slice(0,numShow) : tags)
+  },[showAll, tags, numShow]);
+
+  return(
+    <div className="project-tag-list">
+      <div className="project-tags">
+        {displayedTags.map((tag, index)=> (
+          <Tag key={index} index={index}>
+            {tag}
+          </Tag>
+        ))}
+        {tags.length > numShow && <button className='show-tags-btn' onClick = {toggle}>{showAll? `<` : `>`}</button>}
+      </div>
+    </div>
+  )
+}
+
+//============================================
 // PROJECT CARD COMPONENT
 //============================================
 const ProjectCard=({ project })=> {
@@ -126,13 +165,8 @@ const ProjectCard=({ project })=> {
         </h2>
 
         {/* Tags */}
-        <div className="project-tags">
-          {project.tags.sort().map((tag, index)=> (
-            <Tag key={index} index={index}>
-              {tag}
-            </Tag>
-          ))}
-        </div>
+        <TagList tags={project.tags.skills} numShow={3}/>
+        <TagList tags={project.tags.frameworks} numShow={4}/>
 
         {/* Description */}
         <p className="project-description">
@@ -180,14 +214,22 @@ const ProjectCard=({ project })=> {
 const PersonalCard=({title, text, photoURL, resumeURL})=> {
 
   const allSkills = useMemo(()=>{
-
-    const flatTags = projects.flatMap(project => project.tags);
-
+    const flatTags = projects.flatMap(project => project.tags.skills);
     const tagCounts = flatTags.reduce((acc, tag) => {
       acc[tag] = (acc[tag] || 0) + 1;
       return acc;
     },{});
+    return Object.entries(tagCounts)
+      .map(([tag, count])=>({tag, count}))
+      .sort((a,b)=>b.count - a.count || a.tag.localeCompare(b.tag));
+  },[projects]);
 
+  const allFrameworks = useMemo(()=>{
+    const flatTags = projects.flatMap(projects => projects.tags.frameworks);
+    const tagCounts = flatTags.reduce((acc,tag)=>{
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    },{});
     return Object.entries(tagCounts)
       .map(([tag, count])=>({tag, count}))
       .sort((a,b)=>b.count - a.count || a.tag.localeCompare(b.tag));
@@ -209,6 +251,15 @@ const PersonalCard=({title, text, photoURL, resumeURL})=> {
         <div className="skills-container">
           {allSkills.map((skill,index)=>(
             <Tag key={index} index={index}>{`${skill.tag} (${skill.count})`}</Tag>
+          ))}
+        </div>
+      </div>
+      {/* Frameworks section */}
+      <div className="skills-section">
+        <h2 className="skills-title">Frameworks</h2>
+        <div className="skills-container">
+          {allFrameworks.map((framework,index)=>(
+            <Tag key={index} index={index}>{`${framework.tag} (${framework.count})`}</Tag>
           ))}
         </div>
       </div>
