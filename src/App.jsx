@@ -32,11 +32,23 @@ const contactInfo={
 //============================================
 const projects=[
     {
+    title: "Humble Counter: Using an LLM to Update State",
+    description: "Attempted and failed to build a text-based adventure game run via contract between an LLM and a rigorous game-state. Player inputs would be interpreted by the LLM which would update state accordingly and return a response. Created a proof-of-concept for LLM acting as a state-management engine via a humble counter.",
+    tags: {
+      skills:["RAG","LLM","State Management"],
+      frameworks:["Python","React","TypeScript","Vercel", "GCP","Ollama","Pydantic"]
+    },
+    image: "/assets/HC.jpg",
+    githubUrl: "https://github.com/EvanMcCormick37/llm-state-manager-poc",
+    readMoreUrl:"https://evmojo37.substack.com/p/humble-counter",
+    liveUrl: "https://llm-state-manager-c9n0fpsd0-evan-mccornmicks-projects.vercel.app/",
+  },
+  {
     title: "Distracted LLM: A full-stack RAG Application",
     description: "Built A full-stack RAG application using REST API, containerization, and cloud compute. Distracted LLM allows multiple users to asynchronously upload 'distractions' to the vector database. Distracted LLM will then shamelessly attempt to change the subject to whatever 'distractions' the RAG service returns for any given user query.",
     tags: {
       skills:["RAG","REST API","Database Management","LLM","Full-stack"],
-      frameworks:["Python","Docker","CGP","React","Vercel"]
+      frameworks:["Python","Docker","CGP","React","Vercel","Pydantic"],
     },
     image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
