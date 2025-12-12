@@ -452,6 +452,9 @@ const SectionCard=({ children, name })=> {
       }
       {isOpen && 
       <div className="section-content">
+        <button className="section-close" onClick={toggle}>
+          <ChevronUp size={10}></ChevronUp>
+        </button>
         {children}
         <button className="section-close" onClick={toggle}>
           <ChevronUp size={20}></ChevronUp>
