@@ -43,6 +43,17 @@ const projects=[
       readMoreUrl:"https://evmojo37.substack.com/p/can-an-ai-generate-squares"
     },
     {
+      title: "Can an AI model Generate Climbs? Building climbs using LSTMs with autoregressive generation",
+      description:"Built a custom React-UI for uploading a climbing wall, and uploading climbs as sequences of positions. Trained MLP, RNN, and LSTM models on climbing data and used auto-regression to generate valid custom climbs on my homewall.",
+      tags:{
+        skills:["Machine Learning","Neural Networks","LSTM",],
+        frameworks:["Torch","Python","React","Jupyter Notebook"]
+      },
+      image: "assets/CL.",
+      githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator/tree/main",
+      readMoreUrl:"https://evmojo37.substack.com/p/beta-zero-alpha-can-ai-set-climbs"
+    },
+    {
     title: "Humble Counter: Using an LLM to Update State",
     description: "Attempted and failed to build a text-based adventure game run via contract between an LLM and a rigorous game-state. Player inputs would be interpreted by the LLM which would update state accordingly and return a response. Created a proof-of-concept for LLM acting as a state-management engine via a humble counter.",
     tags: {
