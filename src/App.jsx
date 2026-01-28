@@ -49,7 +49,7 @@ const projects=[
         skills:["Machine Learning","Neural Networks","LSTM",],
         frameworks:["Torch","Python","React","Jupyter Notebook"]
       },
-      image: "assets/CL.",
+      image: "assets/CL.png",
       githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator/tree/main",
       readMoreUrl:"https://evmojo37.substack.com/p/beta-zero-alpha-can-ai-set-climbs"
     },
