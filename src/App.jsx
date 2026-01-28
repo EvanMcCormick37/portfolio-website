@@ -32,6 +32,17 @@ const contactInfo={
 //============================================
 const projects=[
     {
+      title: "Can an AI model Generate Squares? Explorations with Equivariant Graph Neural Networks",
+      description: "Designed an E(2) equivariant Graph Neural Network in torch to transform quadrilaterals into squares. Recorded the results on Substack and in Jupyter Notebook.",
+      tags:{
+        skills:["Graph Neural Networks", "Neural Networks","Machine Learning"],
+        frameworks:["Python","Torch","Jupyter Notebook",]
+      },
+      image: "assets/SQ.jpg",
+      githubUrl:"https://github.com/EvanMcCormick37/toy-egnn",
+      readMoreUrl:"https://evmojo37.substack.com/p/can-an-ai-generate-squares"
+    },
+    {
     title: "Humble Counter: Using an LLM to Update State",
     description: "Attempted and failed to build a text-based adventure game run via contract between an LLM and a rigorous game-state. Player inputs would be interpreted by the LLM which would update state accordingly and return a response. Created a proof-of-concept for LLM acting as a state-management engine via a humble counter.",
     tags: {
