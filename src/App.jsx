@@ -32,7 +32,7 @@ const contactInfo={
 //============================================
 const projects=[
     {
-      title: "Can an AI model Generate Squares? Explorations with Equivariant Graph Neural Networks",
+      title: "Explorations with Equivariant Graph Neural Networks",
       description: "Designed an E(2) equivariant Graph Neural Network in torch to transform quadrilaterals into squares. Recorded the results on Substack and in Jupyter Notebook.",
       tags:{
         skills:["Graph Neural Networks", "Neural Networks","Machine Learning"],
