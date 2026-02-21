@@ -32,6 +32,18 @@ const contactInfo={
 //============================================
 const projects=[
     {
+      title: "BetaZero: A Diffusion Model for Board Climb Generation",
+      description: "Built, iterated, improved, and deployed a U-Net diffusion model for generating board climbs on system boards. Worked with a large open-source dataset, a hand-made data pipeline, and a hand-built workflow for uploading walls, holds and climbs. Designed a custom DDPM model and trained on the cloud using a custom training pipeline. Built and deployed a full-stack web application using the model, and optimized for speed and compute efficiency.",
+      tags:{
+        skills:["Diffusion", "Neural Networks", "Machine Learning",  "REST API", "Full-Stack", "Data Science", "Database Management"],
+        frameworks:["Python", "Torch", "Jupyter Notebook", "React", "TypeScript", "GCP", "Pydantic","SQL", "Docker","Caddy","Railway"]
+      },
+      image: "assets/BZ.gif",
+      githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator",
+      readMoreUrl:"https://evmojo37.substack.com/p/betazero-v2-a-diffusion-model-for",
+      liveUrl: "https://betazero.live/",
+    },
+    {
       title: "Explorations with Equivariant Graph Neural Networks",
       description: "Designed an E(2) equivariant Graph Neural Network in torch to transform quadrilaterals into squares. Recorded the results on Substack and in Jupyter Notebook.",
       tags:{
@@ -69,8 +81,8 @@ const projects=[
     title: "Distracted LLM: A full-stack RAG Application",
     description: "Built A full-stack RAG application using REST API, containerization, and cloud compute. Distracted LLM allows multiple users to asynchronously upload 'distractions' to the vector database. Distracted LLM will then shamelessly attempt to change the subject to whatever 'distractions' the RAG service returns for any given user query.",
     tags: {
-      skills:["RAG","REST API","Database Management","LLM","Full-stack"],
-      frameworks:["Python","Docker","CGP","React","Vercel","Pydantic"],
+      skills:["RAG","REST API","Database Management","LLM","Full-stack", "Database Management"],
+      frameworks:["Python","Docker","GCP","React","Vercel","Pydantic"],
     },
     image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
@@ -459,8 +471,8 @@ const ContactCard=({ email, phone, location, social })=> {
 //============================================
 // SECTION CARD COMPONENT
 //============================================
-const SectionCard=({ children, name })=> {
-  const [isOpen, setIsOpen]=useState(false);
+const SectionCard=({ children, name, isOpenInit })=> {
+  const [isOpen, setIsOpen]=useState(isOpenInit);
   const toggle=useCallback(()=>{
     setIsOpen(prev=> !prev);
   }, []);
@@ -515,7 +527,7 @@ function App() {
       <Header />
       <main className="main-content">
         {/* Personal Info Section */}
-        <SectionCard name={"Me"}>
+        <SectionCard name={"Me"} isOpenInit={true}>
           <PersonalCard {...personalInfo}/>
         </SectionCard>
         {/* Project Section */}
