@@ -46,8 +46,8 @@ const projects=[
       title: "BetaZero: A Diffusion Model for Board Climb Generation",
       description: "Built, iterated, improved, and deployed a U-Net diffusion model for generating board climbs on system boards. Worked with a large open-source dataset, a hand-made data pipeline, and a hand-built workflow for uploading walls, holds and climbs. Designed a custom DDPM model and trained on the cloud using a custom training pipeline. Built and deployed a full-stack web application using the model, and optimized for speed and compute efficiency.",
       tags:{
-        skills:["Diffusion", "Neural Networks", "Machine Learning", "Deep Learning", "REST API", "Full-Stack", "Data Science", "Database Management"],
-        frameworks:["Python", "Torch", "Jupyter Notebook", "React", "TypeScript", "GCP", "Pydantic", "SQL", "Docker", "Caddy", "Railway"]
+        skills:["Diffusion", "Neural Networks", "Machine Learning", "Deep Learning", "REST API", "Full-Stack", "Data Science", "Database Management", "Data Cleaning"],
+        frameworks:["Python", "Torch", "Jupyter Notebook", "React", "TypeScript", "GCP", "Pydantic", "SQL", "Docker", "Caddy", "Railway", "Pandas", "Numpy"]
       },
       image: "assets/BZ.gif",
       githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator",
@@ -59,7 +59,7 @@ const projects=[
       description: "Designed an E(2) equivariant Graph Neural Network in torch to transform quadrilaterals into squares. Recorded the results on Substack and in Jupyter Notebook.",
       tags:{
         skills:["Graph Neural Networks", "Neural Networks", "Machine Learning", "Deep Learning"],
-        frameworks:["Python", "Torch", "Jupyter Notebook"]
+        frameworks:["Python", "Torch", "Jupyter Notebook","Pandas", "Numpy"]
       },
       image: "assets/SQ.jpg",
       githubUrl:"https://github.com/EvanMcCormick37/toy-egnn",
@@ -69,8 +69,8 @@ const projects=[
       title: "Can an AI model Generate Climbs? Building climbs using LSTMs with autoregressive generation",
       description:"Built a custom React-UI for uploading a climbing wall, and uploading climbs as sequences of positions. Trained MLP, RNN, and LSTM models on climbing data and used auto-regression to generate valid custom climbs on my homewall.",
       tags:{
-        skills:["Machine Learning", "Neural Networks", "LSTM", "Deep Learning"],
-        frameworks:["Torch", "Python", "React", "Jupyter Notebook"]
+        skills:["Machine Learning", "Neural Networks", "LSTM", "Deep Learning", "Data Cleaning"],
+        frameworks:["Torch", "Python", "React", "Jupyter Notebook","Pandas", "Numpy"]
       },
       image: "assets/CL.png",
       githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator/tree/main",
@@ -105,7 +105,7 @@ const projects=[
     description: "Analyzed RL agent performance in a game requiring the formation of novel communication systems without explicit channels. Implemented and evaluated reinforcement learning models in custom RL environments.",
     tags: {
       skills:["Machine Learning","Reinforcement Learning","Multi-Agent","Deep Learning","Neural Networks"],
-      frameworks:["Python","Tensorflow","Gymnasium","StableBaselines3","Jupyter Notebook","Vercel"]
+      frameworks:["Python","Tensorflow","Gymnasium","StableBaselines3","Jupyter Notebook","Vercel","Pandas","Numpy"]
     },
     image: "/assets/ECG.png",
     githubUrl: "https://github.com/EvanMcCormick37/independent-study-F24-learning-RL-with-gymnasium",
@@ -115,7 +115,7 @@ const projects=[
     title: "Text Mining Public Opinion on the Transgender Rights Movement in the News",
     description: "Analyzed transgender rights coverage across the political spectrum using web-scraped news data. Applied clustering, topic modeling, and rule-mining to categorize and characterize the text. Implemented various supervised learning models (Naive-Bayes, Decision Trees, SVMs), plus neural networks for sentiment analysis—revealing key trends in media representation of transgender issues.",
     tags: {
-      skills:["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","NLP"],
+      skills:["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","NLP","Data Cleaning"],
       frameworks:["Python","R","Tensorflow","Jupyter Notebook","Vercel","Scikit-learn"]
     },
     image: "/assets/TM.png",
@@ -126,8 +126,8 @@ const projects=[
     title: "Data Science Substack: Bouldering Elo on MountainProject",
     description: "Scraped tick data for boulders in Colorado from MountainProject. Analyzed the data, used various models to predict V-grade estimates with other data, and created a match-making system to estimate climber strength and boulder difficulty without use of personal V-grade estimations.",
     tags: {
-      skills:["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Statistical/Numerical Analysis", "Data Ingestion"],
-      frameworks:["Python","Jupyter Notebook","Pandas"]
+      skills:["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Statistical/Numerical Analysis", "Data Ingestion", "Web Scraping", "Data Cleaning"],
+      frameworks:["Python","Jupyter Notebook","Pandas","Numpy"]
     },
     image:"/assets/MP.jpg",
     githubUrl: "https://github.com/EvanMcCormick37/climbing-grade-predictions-without-user-grades",
@@ -137,8 +137,8 @@ const projects=[
     title: "Data Science Substack: Designing a Chess Puzzle App w. Database",
     description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
     tags: {
-      skills:["Full-stack","Mobile Development","Database Management","Data Science","Data Mining","Data Communication","Deep Learning","Neural Networks"],
-      frameworks:["Kotlin", "Firebase","JavaScript","Python","Jupyter Notebook","Jetpack Compose","Gradle","Keras","TensorFlow","Pandas"]
+      skills:["Full-stack","Mobile Development","Database Management","Data Science","Data Mining","Data Communication","Deep Learning","Neural Networks","Data Cleaning"],
+      frameworks:["Kotlin", "Firebase","JavaScript","Python","Jupyter Notebook","Jetpack Compose","Gradle","Keras","TensorFlow","Pandas","Numpy"]
     },
     image: "/assets/CG.png",
     githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
