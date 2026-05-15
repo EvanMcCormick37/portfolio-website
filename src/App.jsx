@@ -8,7 +8,10 @@ import './App.css';
 //============================================
 const personalInfo={
     title: "About Me",
-    text: "Hey y'all! I'm an avid Data Scientist and Software Developer with 3 years of experience in full-stack development. Earlier this year, I completed my Master's in Data Science at University of Colorado Boulder (May 2025) with a focus in Machine Learning, Reinforcement Learning, LLMs and Big Data Architecture. I'm passionate about using statistics, ML engineering, and software design to develop innovative solutions to complex problems. Check out my skills and deployed projects here!",
+    text: "Hey y'all! I'm an avid Data Scientist and Software Developer with 3 years of experience in full-stack development. \
+    Last year, I completed my Master's in Data Science at University of Colorado Boulder (May 2025). \
+    Since then, I've continued to learn, teach, and build with machine learning and data processing systems. \
+    My vision is to learn, build, and teach others about these beautiful machines that are changing the world, and to use my skill in data science, ML, and SWE to develop innovative solutions to complex problems. Check out my skills and deployed projects here!",
     photoURL: "/assets/EvDevMojo.jpg",
     resumeURL: "/assets/Resume.pdf"
   }
