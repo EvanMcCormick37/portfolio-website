@@ -8,7 +8,7 @@ import './App.css';
 //============================================
 const personalInfo={
     title: "About Me",
-    text: "Hey y'all! I'm an avid Data Scientist and Software Developer with 3 years of experience in full-stack development. \
+    text: "Hey y'all! I'm an avid Machine Learning engineer and Data Scientist with five years of experience in full-stack software development. \
     Last year, I completed my Master's in Data Science at University of Colorado Boulder (May 2025). \
     Since then, I've continued to learn, teach, and build with machine learning and data processing systems. \
     My vision is to learn, build, and teach others about these beautiful machines that are changing the world, and to use my skill in data science, ML, and SWE to develop innovative solutions to complex problems. Check out my skills and deployed projects here!",
@@ -34,12 +34,23 @@ const contactInfo={
 // PROJECT DATA
 //============================================
 const projects=[
+  {
+      title: "SerpAPI Job Listing Pipeline and Analytics Dashboard",
+      description: "Built a customizable data pipeline and career search hub using Python and HTMX. Scraped job listings from the Google Jobs API and using a customizable two-tier LLM scoring system to rank them by compatibility with a provided career profile. LLMs also extract metadata, and extract required skills and frameworks from job listings, creating a taxonomy of in-demand skills for the jobs being ingested.",
+      tags: {
+        skills:["Containerization","Agentic Engineering", "Education", "LLMs", "Context Engineering", "Vector Databases", "Knowledge Graphs"],
+        frameworks:["Git","Python", "Claude Code", "Docling", "SQL", "FastAPI", "OpenRouter", "HTMX", "PostGreSQL", "Bash", "Docker"]
+      },
+      image:"assets/CS.png",
+      githubUrl: "https://github.com/EvanMcCormick37/data-science-career-search",
+      readMoreUrl: "https://evmojo37.substack.com/p/the-job-search-meta-is-getting-weird"
+    },
     {
       title: "Scáthach Agentic Tutor",
       description: "Built and iterated on an agentic tutoring system which quizzes users on reading comprehension on a set of documents using an adaptivel learning algorithm. The model then stores questions and documents in a database for spaced repetition review.",
       tags: {
-        skills:["Agentic Engineering", "Education", "LLM", "Prompt Engineering", "Vector Databases", "Knowledge Graphs"],
-        frameworks:["Python", "Claude Code", "Docling", "SQL", "FastAPI", "React", "SQLite"]
+        skills:["Agentic Engineering", "Education", "LLMs", "Context Engineering", "Knowledge Graphs"],
+        frameworks:["Git","Python", "Claude Code", "Docling", "SQL", "SQLite"]
       },
       image:"assets/SC.png",
       githubUrl: "https://github.com/EvanMcCormick37/scathach-tutor",
@@ -49,8 +60,8 @@ const projects=[
       title: "BetaZero: A Diffusion Model for Board Climb Generation",
       description: "Built, iterated, improved, and deployed a U-Net diffusion model for generating board climbs on system boards. Worked with a large open-source dataset, a hand-made data pipeline, and a hand-built workflow for uploading walls, holds and climbs. Designed a custom DDPM model and trained on the cloud using a custom training pipeline. Built and deployed a full-stack web application using the model, and optimized for speed and compute efficiency.",
       tags:{
-        skills:["Diffusion", "Neural Networks", "Machine Learning", "Deep Learning", "REST API", "Full-Stack", "Data Science", "Database Management", "Data Cleaning"],
-        frameworks:["Python", "Torch", "Jupyter Notebook", "React", "TypeScript", "GCP", "Pydantic", "SQL", "Docker", "Caddy", "Railway", "Pandas", "Numpy"]
+        skills:["Containerization","Model Deployment","Diffusion", "Neural Networks", "Machine Learning", "Deep Learning", "REST API", "Full-Stack", "Data Science", "Database Management", "Data Cleaning"],
+        frameworks:["Git","Python", "Torch", "Jupyter Notebook", "React", "TypeScript", "GCP", "Pydantic", "SQL", "Docker", "Caddy", "Railway", "Pandas", "Numpy"]
       },
       image: "assets/BZ.gif",
       githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator",
@@ -62,7 +73,7 @@ const projects=[
       description: "Designed an E(2) equivariant Graph Neural Network in torch to transform quadrilaterals into squares. Recorded the results on Substack and in Jupyter Notebook.",
       tags:{
         skills:["Graph Neural Networks", "Neural Networks", "Machine Learning", "Deep Learning"],
-        frameworks:["Python", "Torch", "Jupyter Notebook","Pandas", "Numpy"]
+        frameworks:["Git","Python", "Torch", "Jupyter Notebook","Pandas", "Numpy"]
       },
       image: "assets/SQ.jpg",
       githubUrl:"https://github.com/EvanMcCormick37/toy-egnn",
@@ -72,8 +83,8 @@ const projects=[
       title: "Can an AI model Generate Climbs? Building climbs using LSTMs with autoregressive generation",
       description:"Built a custom React-UI for uploading a climbing wall, and uploading climbs as sequences of positions. Trained MLP, RNN, and LSTM models on climbing data and used auto-regression to generate valid custom climbs on my homewall.",
       tags:{
-        skills:["Machine Learning", "Neural Networks", "LSTM", "Deep Learning", "Data Cleaning"],
-        frameworks:["Torch", "Python", "React", "Jupyter Notebook","Pandas", "Numpy"]
+        skills:["Model Deployment","Machine Learning", "Neural Networks", "LSTM", "Deep Learning", "Data Cleaning"],
+        frameworks:["Git","Torch", "Python", "React", "Jupyter Notebook","Pandas", "Numpy"]
       },
       image: "assets/CL.png",
       githubUrl:"https://github.com/EvanMcCormick37/ml-homewall-climb-generator/tree/main",
@@ -83,8 +94,8 @@ const projects=[
     title: "Humble Counter: Using an LLM to Update State",
     description: "Attempted and failed to build a text-based adventure game run via contract between an LLM and a rigorous game-state. Player inputs would be interpreted by the LLM which would update state accordingly and return a response. Created a proof-of-concept for LLM acting as a state-management engine via a humble counter.",
     tags: {
-      skills:["RAG","LLM","State Management","Vector Databases","Knowledge Graphs","Prompt Engineering"],
-      frameworks:["Python","React","TypeScript","Vercel", "GCP","Ollama","Pydantic","SQLite"]
+      skills:["Model Deployment","RAG","LLMs","State Management","Vector Databases","Knowledge Graphs","Context Engineering"],
+      frameworks:["Git","Python","React","TypeScript","Vercel", "GCP","Ollama","Pydantic","SQLite"]
     },
     image: "/assets/HC.jpg",
     githubUrl: "https://github.com/EvanMcCormick37/llm-state-manager-poc",
@@ -95,8 +106,8 @@ const projects=[
     title: "Distracted LLM: A full-stack RAG Application",
     description: "Built A full-stack RAG application using REST API, containerization, and cloud compute. Distracted LLM allows multiple users to asynchronously upload 'distractions' to the vector database. Distracted LLM will then shamelessly attempt to change the subject to whatever 'distractions' the RAG service returns for any given user query.",
     tags: {
-      skills:["RAG","REST API","Database Management","LLM","Full-stack","Embedding Generation","Vector Databases","Prompt Engineering"],
-      frameworks:["Python","Docker","GCP","React","Vercel","Pydantic","FastAPI","Tailwind CSS","Material UI","SQLite","Vite"],
+      skills:["Containerization","Model Deployment","RAG","REST API","Database Management","LLMs","Full-stack","Vector Databases","Context Engineering"],
+      frameworks:["Git","Python","Docker","GCP","React","Vercel","Pydantic","FastAPI","Tailwind CSS","Material UI","SQLite","Vite"],
     },
     image: "/assets/DLLM.png",
     githubUrl: "https://github.com/EvanMcCormick37/full-stack-RAG",
@@ -108,7 +119,7 @@ const projects=[
     description: "Analyzed RL agent performance in a game requiring the formation of novel communication systems without explicit channels. Implemented and evaluated reinforcement learning models in custom RL environments.",
     tags: {
       skills:["Machine Learning","Reinforcement Learning","Multi-Agent","Deep Learning","Neural Networks"],
-      frameworks:["Python","Tensorflow","Gymnasium","StableBaselines3","Jupyter Notebook","Vercel","Pandas","Numpy"]
+      frameworks:["Git","Python","Tensorflow","Gymnasium","StableBaselines3","Jupyter Notebook","Vercel","Pandas","Numpy"]
     },
     image: "/assets/ECG.png",
     githubUrl: "https://github.com/EvanMcCormick37/independent-study-F24-learning-RL-with-gymnasium",
@@ -119,7 +130,7 @@ const projects=[
     description: "Analyzed transgender rights coverage across the political spectrum using web-scraped news data. Applied clustering, topic modeling, and rule-mining to categorize and characterize the text. Implemented various supervised learning models (Naive-Bayes, Decision Trees, SVMs), plus neural networks for sentiment analysis—revealing key trends in media representation of transgender issues.",
     tags: {
       skills:["Data Science","Text Mining","Sentiment Analysis","Clustering","ARM","LDA","NLP","Data Cleaning"],
-      frameworks:["Python","R","Tensorflow","Jupyter Notebook","Vercel","Scikit-learn"]
+      frameworks:["Git","Python","R","Tensorflow","Jupyter Notebook","Vercel","Scikit-learn"]
     },
     image: "/assets/TM.png",
     githubUrl: "https://github.com/EvanMcCormick37/Text-Mining-Research-Project-Spring-2024",
@@ -129,7 +140,7 @@ const projects=[
     title: "Data Science Substack: Bouldering Elo on MountainProject",
     description: "Scraped tick data for boulders in Colorado from MountainProject. Analyzed the data, used various models to predict V-grade estimates with other data, and created a match-making system to estimate climber strength and boulder difficulty without use of personal V-grade estimations.",
     tags: {
-      skills:["Data Science", "Data Mining", "Data Visualization", "Data Communication", "Statistical/Numerical Analysis", "Data Ingestion", "Web Scraping", "Data Cleaning"],
+      skills:["Git","Data Science", "Data Mining", "Data Visualization", "Data Communication", "Statistical/Numerical Analysis", "Data Ingestion", "Web Scraping", "Data Cleaning"],
       frameworks:["Python","Jupyter Notebook","Pandas","Numpy"]
     },
     image:"/assets/MP.jpg",
@@ -141,7 +152,7 @@ const projects=[
     description: "Designed a Chess Puzzle Evaluation App for Android using Kotlin. Aggregated and filtered online position databases to create a curated database of positions from which useful positions could be selected at random. Trained a neural network to evaluate positions and used the model's error to estimate puzzle difficulty",
     tags: {
       skills:["Full-stack","Mobile Development","Database Management","Data Science","Data Mining","Data Communication","Deep Learning","Neural Networks","Data Cleaning"],
-      frameworks:["Kotlin", "Firebase","JavaScript","Python","Jupyter Notebook","Jetpack Compose","Gradle","Keras","TensorFlow","Pandas","Numpy"]
+      frameworks:["Git","Kotlin", "Firebase","JavaScript","Python","Jupyter Notebook","Jetpack Compose","Gradle","Keras","TensorFlow","Pandas","Numpy"]
     },
     image: "/assets/CG.png",
     githubUrl: "https://github.com/EvanMcCormick37/ChessEvaluator",
